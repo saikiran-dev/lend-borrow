@@ -11,7 +11,7 @@
           type="text"
           name="transaction-with"
           id="transaction-with"
-          class="px-2 border mt-1 block shadow-sm border-gray-300 rounded-md"
+          class="p-2 border mt-1 block shadow-sm border-gray-300 rounded-md"
         />
       </div>
       <div>
@@ -24,7 +24,7 @@
           type="text"
           name="transaction-type"
           id="transaction-type"
-          class="px-2 border mt-1 block shadow-sm border-gray-300 rounded-md"
+          class="p-2 border mt-1 block shadow-sm border-gray-300 rounded-md"
         />
       </div>
       <div>
@@ -37,7 +37,7 @@
           type="text"
           name="transaction-date"
           id="transaction-date"
-          class="px-2 border mt-1 block shadow-sm border-gray-300 rounded-md"
+          class="p-2 border mt-1 block shadow-sm border-gray-300 rounded-md"
         />
       </div>
       <div>
@@ -46,12 +46,11 @@
           class="block text-sm font-medium text-gray-700"
           >Transaction Date</label
         >
-        <input
-          type="text"
-          name="transaction-date"
-          id="transaction-date"
-          class="px-2 border mt-1 block shadow-sm border-gray-300 rounded-md"
-        />
+        <Datepicker
+          placeholder="Select Date"
+          v-model="customDate"
+          format="dd-MM-yyyy"
+        ></Datepicker>
       </div>
       <div>
         <label for="reason" class="block text-sm font-medium text-gray-700">
@@ -62,10 +61,36 @@
             id="reason"
             name="reason"
             rows="3"
-            class="shadow-sm mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+            class="p-2 shadow-sm mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
           ></textarea>
         </div>
       </div>
+      <div></div>
     </div>
   </div>
 </template>
+<script>
+import Datepicker from "vuejs-datepicker";
+export default {
+  name: "AddExpenseForm",
+  components: {
+    Datepicker,
+  },
+  data() {
+    return {
+      customDate: null,
+    };
+  },
+};
+</script>
+<style>
+.vdp-datepicker,
+.vdp-datepicker div > input {
+  /* border: 1px solid black; */
+  border-radius: 0.375rem;
+}
+.vdp-datepicker div > input {
+  border: 1px solid black;
+  padding: 4px;
+}
+</style>
